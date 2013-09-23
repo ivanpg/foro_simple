@@ -1,0 +1,126 @@
+body {
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-size:12px;
+}
+#foro {
+	text-align: left;
+}
+
+.clear {
+	clear: both;
+}
+.preguntas, .pregunta, .respuesta {
+	border: 1px solid #333;
+	margin-bottom:10px;
+}
+#foro h4 {
+	padding: 15px;
+	margin: 0;
+	font-size: 16px;
+	font-weight:bold;
+}
+#foro h4 a {
+	color: #000;
+	text-decoration:none;
+	text-transform:normal;
+}
+#foro h3 a:hover {
+	color: #69c;
+}
+#foro p {
+	padding: 0 20px;
+}
+#foro input, #foro textarea {
+	background:#fff;
+}
+#foro .boton {
+	float: right;
+	padding: 5px 20px;
+	color: #fff;
+	background:#3a72a1;
+	margin-right: 10px;
+	border: 1px solid #333;
+}
+#foro .boton:hover {
+	background:#69c;
+}
+#foro .datos {
+	border-top: 1px solid #333;
+	width:100%;
+	margin: 0;
+	padding: 0;
+	list-style:none;
+	background:#eee;
+	color: #333;
+	font-size: 12px;
+}
+#foro .datos li {
+	display: inline-block;
+	text-align: center;
+	line-height:24px;
+	padding-left: 15px;
+}
+#foro .datos .boton {
+	float: right;	
+	padding: 0;
+	border-left:1px solid #333;
+	margin:0;
+	border: 0;
+}
+#foro .datos a {
+	display: block;
+	background:#3a72a1;
+	color: #fff;
+	text-decoration:none;
+	padding: 0 15px;
+}
+#foro .datos a:hover {
+	background:#69c;
+}
+#foro .pregunta {
+	background:#cdf;
+	color:#000;
+	font-size:16px;
+	margin-bottom:30px;
+}
+#foro #responder {
+	width: 80%;
+	margin:30px auto 10px;
+}
+#foro #responder textarea, #foro #responder input {
+	width:98%;
+	display: block;
+	border: 1px solid #ccc;
+	padding: 10px;
+	font-family: sans-serif;
+	outline:none;
+	margin-bottom: 20px;
+}
+#foro #responder textarea:focus, #foro #responder input:focus {
+	border-color: #69c;
+}
+#foro #responder .boton {
+	float: right;
+	width: 100px;
+	border: 1px solid #333;
+	background:#3a72a1;
+	color: #fff;
+	padding: 5px 20px;
+	outline:none;
+}
+#foro #responder .boton:hover, #foro #responder .boton:focus {
+	background:#69c;
+	cursor: pointer;
+}
+#foro .error {
+	border: 1px solid #c00;
+	background:#fcc;
+	color: #c00;
+	padding: 20px;
+	font-size:16px;
+	margin: 20px;
+}
+#foro #enviar:disabled {
+	background:#999;
+	border-color:#777;
+}
