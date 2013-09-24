@@ -37,7 +37,7 @@ if (isset($_SESSION['se_puede']) && ($_SESSION['se_puede'] == '1'))
 
 	
 	function mostrarRespuestas($id_padre){
-		
+		$id_padre= (int)$id_padre;
 		$consultaPregunta="SELECT nombre,respuesta_contenido,respuesta_titulo,respuesta_fecha 
 						   FROM respuesta JOIN usuarios ON usuarios.codigo = respuesta.usuario_id
 						  WHERE respuesta_id = '$id_padre'";
@@ -74,8 +74,8 @@ if (isset($_SESSION['se_puede']) && ($_SESSION['se_puede'] == '1'))
 		if($_POST['contenido']!="" || $_POST['titulo']!=""){
 			$usuario_id = $_SESSION['id_usuario'];
 		
-			$contenido = $_POST['contenido'];
-			$titulo = $_POST['titulo'];
+			$contenido =  mysql_real_escape_string($_POST['contenido']);
+			$titulo =  mysql_real_escape_string($_POST['titulo']);
 			$insertarPregunta = "INSERT INTO respuesta (usuario_id,respuesta_contenido,respuesta_fecha,respuesta_id_padre,respuesta_titulo,fecha_modificacion) VALUES ('$usuario_id','$contenido',NOW(),0,'$titulo',NOW())";
 			mysql_query($insertarPregunta);
 			echo mysql_error();
@@ -88,9 +88,9 @@ if (isset($_SESSION['se_puede']) && ($_SESSION['se_puede'] == '1'))
 
 	function insertarRespuesta(){
 		if($_POST['contenido']!=""){
-			$usuario_id = $_SESSION['id_usuario'];
-			$contenido = $_POST['contenido'];
-			$id_padre = $_POST['id_padre'];
+			$usuario_id =  mysql_real_escape_string($_SESSION['id_usuario']);
+			$contenido =  mysql_real_escape_string($_POST['contenido']);
+			$id_padre = (int)$_POST['id_padre'];
 	 		$insertarRespuesta = "INSERT INTO respuesta (usuario_id,respuesta_contenido,respuesta_fecha,respuesta_id_padre,respuesta_titulo,fecha_modificacion) VALUES ('$usuario_id','$contenido',NOW(),'$id_padre','',NOW())";
 	 		mysql_query($insertarRespuesta);
 			echo mysql_error();
@@ -102,12 +102,14 @@ if (isset($_SESSION['se_puede']) && ($_SESSION['se_puede'] == '1'))
 	}
 
 	function borrarRespuesta($respuesta_id){
+                $respuesta_id = (int) $respuesta_id;
 		$borrarRespuesta = "DELETE FROM respuesta where respuesta_id = '$respuesta_id'";
 		mysql_query($borrarRespuesta);
 		echo mysql_error();
 	}
 
 	function borrarTema($respuesta_id_padre){
+                 $respuesta_id_padre = (int) $respuesta_id_padre;
 		//borramos cada una de las respuestas
 		$borrarRespuesta = "DELETE FROM respuesta where respuesta_id_padre = '$respuesta_id_padre'";
 		mysql_query($borrarRespuesta);
@@ -121,7 +123,7 @@ if (isset($_SESSION['se_puede']) && ($_SESSION['se_puede'] == '1'))
 	}
 
 	if(isset($_GET['borrar']) && $_GET['borrar'] == 1){		
-		$id=$_GET["id"];
+		$id=(int)$_GET["id"];
 		$consultaId="SELECT respuesta_id_padre from respuesta where respuesta_id = '$id'";
 		$result = mysql_query($consultaId);	
 		$fila = mysql_fetch_assoc($result);
