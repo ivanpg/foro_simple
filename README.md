@@ -13,3 +13,4 @@ Tareas a realizar:
 
 - Sustituir uso de extensión MySql por MySqli o PDO.
 - Falta proceso conexión y autenticación en la base de datos.
+- Permitir crear temas.
